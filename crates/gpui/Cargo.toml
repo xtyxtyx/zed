@@ -88,7 +88,8 @@ postage = { workspace = true, features = ["blocking"], optional = true }
 proptest = { workspace = true, optional = true }
 chrono = { workspace = true, default-features = true }
 profiling.workspace = true
-rand = { workspace = true, features = ["small_rng", "thread_rng"] }
+# rand 0.10, ahead of the workspace's 0.9: its getrandom 0.4 builds for `wasm32-wasip3`.
+rand = { version = "0.10", default-features = false, features = ["std", "std_rng", "sys_rng", "thread_rng"] }
 raw-window-handle.workspace = true
 regex = { workspace = true, default-features = true }
 refineable.workspace = true
@@ -145,7 +146,7 @@ smol = { workspace = true, optional = true }
 subsecond = { version = "=0.7.10", optional = true }
 
 [target.'cfg(target_family = "wasm")'.dependencies]
-getrandom = { version = "0.3.4", features = ["wasm_js"] }
+getrandom = { version = "0.4", features = ["wasm_js"] }
 uuid = { workspace = true, features = ["js"] }
 
 
@@ -183,7 +184,7 @@ web-time.workspace = true
 gpui_platform = { workspace = true, features = ["font-kit", "wayland", "x11"] }
 gpui_util.workspace = true
 lyon_extra = "1.1.0"
-rand = { workspace = true, default-features = true }
+rand = "0.10"
 scheduler = { workspace = true, features = ["test-support"] }
 util_macros.workspace = true
 

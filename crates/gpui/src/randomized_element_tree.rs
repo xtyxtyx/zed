@@ -5,7 +5,7 @@ use crate::{
     Window, div, px, util::FluentBuilder,
 };
 use collections::{HashMap, HashSet};
-use rand::{Rng as _, SeedableRng as _, rngs::StdRng};
+use rand::{RngExt as _, SeedableRng as _, rngs::StdRng};
 use std::{
     cell::RefCell,
     ops::RangeInclusive,

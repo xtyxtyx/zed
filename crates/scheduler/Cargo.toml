@@ -32,7 +32,8 @@ chrono = { workspace = true, features = ["now", "wasmbind"] }
 flume.workspace = true
 futures.workspace = true
 parking_lot.workspace = true
-rand.workspace = true
+# rand 0.10, ahead of the workspace's 0.9: its getrandom 0.4 builds for `wasm32-wasip3`.
+rand = { version = "0.10", default-features = false, features = ["std", "std_rng", "sys_rng"] }
 web-time.workspace = true
 
 [target.'cfg(target_family = "wasm")'.dependencies]
